@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>itcast-ssm2-domain</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>itcast.ssm2</groupId>
-            <artifactId>itcast-ssm2-utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
+    <artifactId>itcast-ssm2-utils</artifactId>
 
 
 </project>

@@ -17,6 +17,13 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
 
+    @Override
+    public Integer saveProduct(Product product) throws Exception{
+        //调用dao层储存方法
+        Integer i = productDao.saveProduct(product);
+        return i;
+    }
+
     public List<Product> findAll() throws Exception {
         List<Product> list = productDao.findAll();
         return list;

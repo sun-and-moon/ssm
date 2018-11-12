@@ -193,6 +193,7 @@
         <module>itcast-ssm2-dao</module>
         <module>itcast-ssm2-service</module>
         <module>itcast-ssm2-web</module>
+        <module>itcast-ssm2-utils</module>
     </modules>
 
 
