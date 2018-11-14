@@ -10,6 +10,7 @@ public class UserInfo {
     private String phoneNum;
     private Integer status;
     private String statusStr;//状态0 未开启 1 开启
+    private List<Role> roles;
 
     @Override
     public String toString() {
@@ -25,7 +26,6 @@ public class UserInfo {
                 '}';
     }
 
-    private List<Role> roles;
 
     public String getId() {
         return id;
