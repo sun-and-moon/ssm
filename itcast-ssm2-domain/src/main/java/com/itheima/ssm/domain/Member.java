@@ -1,5 +1,5 @@
 package com.itheima.ssm.domain;
-
+//会员表
 public class Member {
     private String id;
     private String name;

@@ -4,7 +4,7 @@ import com.itheima.ssm.utils.DateUtils;
 
 import java.util.Date;
 import java.util.List;
-
+//订单表
 public class Orders {
     private String id;
     private String orderNum;
@@ -22,6 +22,22 @@ public class Orders {
 
     public String getId() {
         return id;
+    }
+
+    public List<Traveller> getTravellers() {
+        return travellers;
+    }
+
+    public void setTravellers(List<Traveller> travellers) {
+        this.travellers = travellers;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public void setId(String id) {

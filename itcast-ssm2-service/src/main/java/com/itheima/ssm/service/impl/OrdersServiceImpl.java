@@ -19,7 +19,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Autowired
     private OrdersDao ordersDao;
 
-
+    //分页查询所有订单
     @Override
     public List<Orders> findAll(int page,int Size) throws Exception {
         //调用pagehelper中的starpage方法对查询方法进行分页
@@ -30,5 +30,12 @@ public class OrdersServiceImpl implements OrdersService {
 //        }
 
         return list;
+    }
+
+    //根据id查询订单对象
+    @Override
+    public Orders findById(String id) throws Exception {
+        Orders orders = ordersDao.findById(id);
+        return orders;
     }
 }
