@@ -41,4 +41,26 @@ public interface OrdersDao {
                     many = @Many(select = "com.itheima.ssm.dao.travellerDao.findById"))
     })
     public Orders findById(String id) throws Exception;
+
+    @Delete("delete from orders where id = #{id}")
+    void deleteById(String id);
+
+    //根据orderNum片段模糊查询orders
+    @Select("select * from orders where OrderNum like concat(concat('%',#{orderNum}),'%')")
+    @Results({
+        @Result(id = true,column = "id",property = "id"),
+        @Result(column = "orderNum",property = "orderNum"),
+        @Result(column = "orderTime",property = "orderTime"),
+        @Result(column = "peopleCount",property = "peopleCount"),
+        @Result(column = "orderDesc",property = "orderDesc"),
+        @Result(column = "payType",property = "payType"),
+        @Result(column = "orderStatus",property = "orderStatus"),
+        @Result(column = "memberid",property = "member",javaType = Member.class,
+                one = @One(select = "com.itheima.ssm.dao.MemberDao.findById")),
+        @Result(column = "productid",property = "product",javaType = Product.class,
+                one = @One(select = "com.itheima.ssm.dao.ProductDao.findById")),
+        @Result(column = "id",property = "travellers",javaType = java.util.List.class,
+                many = @Many(select = "com.itheima.ssm.dao.travellerDao.findById"))
+    })
+    Orders findByLikeOrderNum(String orderNum);
 }

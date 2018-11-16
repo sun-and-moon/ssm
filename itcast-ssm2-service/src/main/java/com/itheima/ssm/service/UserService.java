@@ -16,9 +16,9 @@ public interface UserService extends UserDetailsService {
 
 
     //查询所有userinfo对象
-    public List<UserInfo> findAll();
+    public List<UserInfo> findAll(Integer page, Integer pageSize);
 
     List<Role> findUserByIdAndAllRole(String userId)throws Exception;
 
-    void addRoleToUser(String userId, List<String> ids);
+    void addRoleToUser(String userId, String[] ids);
 }

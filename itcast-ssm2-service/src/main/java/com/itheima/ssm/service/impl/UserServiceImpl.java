@@ -1,5 +1,6 @@
 package com.itheima.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.ssm.dao.UserDao;
 import com.itheima.ssm.domain.Role;
 import com.itheima.ssm.domain.UserInfo;
@@ -25,12 +26,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("--------"+username);
+
         User user = null;
+
         try {
             UserInfo userInfo = userDao.findByUserName(username);
-            System.out.println("--------"+userInfo);
-            System.out.println("--------"+userInfo.getRoles());
             user = new User(userInfo.getUsername(), userInfo.getPassword(),userInfo.getStatus()==1?true:false,true,true,true,getauthorities(userInfo.getRoles()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
         List<SimpleGrantedAuthority> list = new ArrayList<>();
         for (Role role : roles) {
         list.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleName()));
-            System.out.println("--------"+role);
         }
         return list;
     }
@@ -66,7 +65,8 @@ public class UserServiceImpl implements UserService {
 
     //查询所有userinfo对象
     @Override
-    public List<UserInfo> findAll() {
+    public List<UserInfo> findAll(Integer page, Integer pageSize) {
+        PageHelper.startPage(page,pageSize);
         List<UserInfo> users = userDao.findAll();
         return users;
     }
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
 
     //将用户id和角色id产生管理
     @Override
-    public void addRoleToUser(String userId, List<String> ids) {
+    public void addRoleToUser(String userId, String[] ids) {
         for (String roleId : ids) {
 //            System.out.println(userId+"------------"+roleId);
             userDao.addRoleToUser(userId,roleId);

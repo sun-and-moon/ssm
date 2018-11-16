@@ -1,5 +1,6 @@
 package com.itheima.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.ssm.dao.PermissionDao;
 import com.itheima.ssm.domain.Permission;
 import com.itheima.ssm.service.PermissionService;
@@ -14,7 +15,8 @@ public class PermissionServiceImpl implements PermissionService {
     private PermissionDao permissionDao;
 
     @Override
-    public List<Permission> findAll() throws Exception {
+    public List<Permission> findAll(Integer page, Integer pageSize) throws Exception {
+        PageHelper.startPage(page,pageSize);
         return permissionDao.findAll();
     }
 

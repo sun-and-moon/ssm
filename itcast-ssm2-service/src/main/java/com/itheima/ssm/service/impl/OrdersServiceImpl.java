@@ -38,4 +38,17 @@ public class OrdersServiceImpl implements OrdersService {
         Orders orders = ordersDao.findById(id);
         return orders;
     }
+
+    @Override
+    public void deleteByIds(String[] ids) {
+        for (String id : ids) {
+            ordersDao.deleteById(id);
+        }
+    }
+
+    @Override
+    public Orders findByLikeOrderNum(String likeOrderNum) {
+        Orders orders = ordersDao.findByLikeOrderNum(likeOrderNum);
+        return orders;
+    }
 }

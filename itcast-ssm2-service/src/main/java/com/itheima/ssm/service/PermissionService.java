@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PermissionService {
 
-    public List<Permission> findAll() throws Exception;
+    public List<Permission> findAll(Integer page, Integer pageSize) throws Exception;
 
     public Integer save(Permission permission);
 }

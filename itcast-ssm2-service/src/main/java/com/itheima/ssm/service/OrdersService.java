@@ -10,4 +10,8 @@ public interface OrdersService {
     public List<Orders> findAll(int page,int Size) throws Exception;
 
     public Orders findById(String id) throws Exception;
+
+    void deleteByIds(String[] ids);
+
+    Orders findByLikeOrderNum(String likeOrderNum);
 }
